@@ -43,3 +43,62 @@ public void methodA(int var){
    - ```java
      ClassA.methodA(); // 선언 없이 바로 호출 가능
      ```
+
+#### 패키지와 임포트
+- 패키지 : 서로 관련 있는 클래스 또는 인터페이스의 묶음 
+  - 다른 패키지에 존재하는 클래스를 사용하는 경우에는 반드시 패키지를 포함한 풀 클래스 명을 사용해야 한다.
+  - 그러나 쓸 때마다 그러면 너무 귀찮을 것 같은데?
+- 임포트 : 서로 다른 패키지에 있는 클래스나 인터페이스를 사용하는 경우에도 패키지명을 생략하고 사용할 수 있도록 미리 선언해놓는 것
+  - 어떠한 패키지 내에 있는 클래스를 사용할 것인지에 대해 미리 선언하는 효과를 갖는다. 
+
+---
+
+### 자바에서 제공하는 라이브러리에 있는 클래스
+### 1. 난수를 발생시키는 Math와 Random
+#### Math를 활용한 난수 발생
+```java
+int random1 = (int) (Math.random() * 10);
+// 강제 형변환으로 소수점 이하 생략 가능.
+// 0 ~ 9 까지의 정수 형태의 난수 발생
+
+int random2 = (int) (Math.random() * 10) + 1;
+// 1 ~ 9
+
+int random3 = (int) (Math.random() * 6) + 10;
+// 10 ~ 15
+
+int random4 = (int) (Math.random() * 256) - 128;
+// -128 ~ 127
+```
+- Math는 java.lang 패키지에 속해 있기 때문에 따로 import 하지 않고 그대로 사용할 수 있다. 
+- `범위의 갯수`를 곱해준 뒤, 해당 위치를 만들어주기 위해 더하거나 빼준다.
+<br><br><br>
+
+#### Random을 활용한 난수 발생 
+```java
+import java.util.Random;
+
+...
+
+Random random new Random();
+
+int randNum1 = random.nextInt(10);
+```
+
+### 2. 자료형 입력을 위한 Scanner 
+- Scanner 객체 생성
+```java
+import java.util.Scanner
+...
+Scanner sc = new Scanner(System.in);
+```
+- 값 입력 받기
+```java
+System.out.println(" ~ 입력해주세요! : ");
+String name = sc.nextLine();
+int age = sc.nextInt();
+float height = sc.nextFloat();
+```
+#### nextLine() vs next()
+- `nextLine()` : 말 그대로 한 문장, 즉 개행문자 전까지를 읽는다. 이때, 공백을 포함한다.
+- `next()` : 공백 문자나 개행 문자 전까지를 읽어서 문자열로 반환. 공백을 포함하지 않는다.
