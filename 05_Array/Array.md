@@ -46,4 +46,44 @@ Old에 가게되면 GC(Garbage Collector)에 의해 삭제된다.
     - ```java
       int[] copyArr4 = Arrays.copyOf(originArr, 7);
       ```
+---
+#### 향상된 for문
+```java
+for(int i : arr2){
+    system.out.println(i);
+} // 배열 arr2에 저장된 값들을 i에 하나씩 꺼내와서 출력
+```
+- 깊은 복사를 활용
 
+#### 변수의 값 교환
+```java
+int num1 = 1;
+int num2 = 2;
+int temp = num1;
+num1 = num2;
+num2 = temp;
+``` 
+- 임시 변수를 활용하여 num1과 num2의 값 교환
+
+#### 정렬
+- 여러 가지 정렬 방법이 존재
+- 순차정렬 : 배열의 처음과 끝을 탐색하며 순서대로 값을 교환하는 알고리즘
+```java
+public static void main(String[] args) {
+    int[] arr = {5,2,1,4,3,7,6};
+    int temp;
+    
+    for(int i = 0; i < arr.length; i++) {
+        for(int j = 0; j < i; j++) {
+            if(arr[j] > arr[i]) {
+                temp = arr[j];
+                arr[j] = arr[i];
+                arr[i] = temp; 
+            }
+        }
+    }
+    for (int i = 0; i < arr.length; i++) {
+        System.out.println(arr[i]);
+    }
+}
+```
