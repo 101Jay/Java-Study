@@ -1,2 +1,2 @@
-## Java 개인 스터디를 위한 Repository입니다.
+## Java-Study
 Repository for studying Java.
