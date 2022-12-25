@@ -67,3 +67,21 @@
 - 여러 인스턴스가 공유해서 사용할 수 있다.
 - stack에서 메인 메서드가 pop될 때까지 고정적으로 존재한다.
 - 남발할 경우 유지보수성을 떨어뜨리고 추적이 힘든 코드가 될 수 있음으로 남발해선 안된다.
+- static이 붙어있는 변수를 클래스 변수, 그렇지 않은 변수를 인스턴스 변수라고 한다.
+
+```java
+public class StaticFieldTest {
+
+	private int nonStaticCount;
+	private static int staticCount; // 클래스 변수의 선언
+	
+	public int getNonStaticCount() {
+		return this.nonStaticCount;
+	}
+	
+	public int getStaticCount() {
+		return StaticFieldTest.staticCount; // 클래스 변수의 사용
+	}
+}
+```
+- 이렇게 선언된 static 변수의 값은 누적된다.
