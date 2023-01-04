@@ -87,6 +87,34 @@ Book book2 = new Book("홍길동전");
 - 문자열을 특정 기호를 기준으로 잘라내어 배열로 반환한다.
 - 두 번째 인자가 존재하면 해당 수만큼으로 문자열을 잘라낸다.
 
+### StringTokenizer 객체
+- java.util 패키지 안에 있는 객체로, 문자열 분리에 활용
+- 구분자를 기준으로 나뉘어진 목록 생성
+- 여러 구분자를 쓰고 싶을 때 대괄호 없이 /#* 와 같이 작성 가능
+- 목록에서 한 번 꺼내어 사용했으면, 해당 목록으로는 재사용 불가
+```java
+public class Application {
+  public static void main(String[] args) {
+    java.lang.String example = "java/C++/C/javascript/dart";
+    StringTokenizer stringTokenizer = new StringTokenizer(example, "/");
+
+    System.out.println(stringTokenizer);
+    System.out.println(stringTokenizer.nextToken()); // java
+    System.out.println(stringTokenizer.nextToken()); // C++
+    System.out.println(stringTokenizer.nextToken()); // C
+    System.out.println(stringTokenizer.hasMoreTokens());
+    System.out.println(stringTokenizer.nextToken()); // javascript
+    System.out.println(stringTokenizer.nextToken()); // dart
+    System.out.println(stringTokenizer.hasMoreTokens()); // false
+  }
+}
+```
+
+### escape sequence
+- 역슬래스 ( \ ) 기호가 붙은 특수한 기능을 하는 문자 
+-  \n : 개행문자, \t : 탭, \ ' : 작은따옴표, \ " : 큰 따옴표, \ \ : 역슬래쉬 등
+- split() 메서드 사용시, 구분자로 특수문자를 사용할 경우, 정규표현식에 사용되는 특수기호($ ^ * ( ) + | { } [ ] . ?) 등은 escape sequence를 활용해 작성해줘야 한다.
+
 
 ### 문자열 객체를 만드는 방법
 - 자바에서 문자열을 선언하는 방법은 다음 두 가지이다.
@@ -112,3 +140,42 @@ String str1 = new String("example");
 #### 문자열의 불변 특성
 - 기존 문자열에 +(합치기) 연산을 수행하는 경우 문자열을 수정하는 것이 아닌 새로운 문자열을 할당하게 된다.
 - 따라서 문자열을 계속 변경할 경우 새로운 문자열을 계속해서 할당하는 것임으로 성능이 저하될 수 있다.
+
+### StringBuilder
+- 기존 인스턴스를 수정하는 방식을 사용한다.
+- capacity(), append(), delete(), insert(), reverse() 등의 메서드를 사용할 수 있다.
+```java
+public class Application {
+    public static void main(String[] args) {
+        
+        StringBuilder sb = new StringBuilder("hello");
+        String str = "hello";
+
+//        str.append("hi"); // 불가
+        sb.append("hi");
+        System.out.println(sb);
+
+    }
+}
+```
+
+### Wrapper
+- 원시 데이터 타입을 인스턴스화 해주는 클래스
+- 기본 값을 값으로서 처리하는게 아니라 객체로서 처리해야 할 때 사용.
+- 박싱과 언박싱
+  - 박싱 : 기본 타입을 Wrapper 클래스의 인스턴스로 인스턴스화 하는 것
+  - 언박싱 : Wrapper 클래스 타입의 인스턴스를 기본 타입으로 변경하는 것
+```java
+public class Application {
+  public static void main(String[] args) {
+
+    int value = 20;
+    Integer boxingValue = Integer.valueOf(value); // Boxing
+    int unBoxingValue = boxingValue.intValue(); // unBoxing
+
+    System.out.println(value == boxingValue); // true
+  }
+}
+```
+- Java 1.5 부터는 박싱과 언박싱이 필요한 상황에서 컴파일러가 자동으로 처리해준다. (오토 박싱, 오토 언박싱)
+
