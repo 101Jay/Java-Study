@@ -179,3 +179,42 @@ public class Application {
 ```
 - Java 1.5 부터는 박싱과 언박싱이 필요한 상황에서 컴파일러가 자동으로 처리해준다. (오토 박싱, 오토 언박싱)
 
+### parsing 
+- 문자열(String) 값을 기본 자료형 값으로 변경하는 것을 parsing이라고 한다.
+```java
+public class Application {
+  public static void main(String[] args) {
+
+    int example = Integer.parseInt("4"); // 문자열 값을 Integer로 parsing 
+  }
+}
+```
+
+### valueOf()
+- 기본 자료형 값을 Wrapper 클래스 타입으로 변환시키는 메소드
+
+### String 클래스의 valueOf()
+- 각 자료형별로 오버라이딩 되어 있어서 
+
+---
+
+### Date
+- Date 시스템으로부터 현재 날짜, 시간 정보를 가져와서 다룰 수 있게 만들어진 클래스
+
+### Calendar와 이를 상속 받은 GregorianCalendar 
+- Calendar는 추상 클래스로 만들어졌고, 이를 상속 받아 GregorianCalendar 클래스가 만들어졌다.
+
+### Calendar 클래스의 활용 
+- 추상 클래스이기 때문에 인스턴스를 생성할 수 없다.
+1. getInstance() 메소드를 활용해서 생성
+   - GregorianCalendar를 이용하여 구현되어 있다.
+   - GregorianCalendar을 은닉하여 구현부에 변경이 생기더라도 사용하는 측에서는 변경하지 않도록 하기 위함
+
+2. new GregorianCalendar() 를 활용한 생성
+   - 다양한 생성자를 이용할 수 있도록 오버로딩 해놓음
+
+- get(Calendar.YEAR); 등을 이용해서 해당 값을 가져올 수 있다. 
+
+### SimpleDateFormat 객체 
+- 원하는 포맷을 잡아주는 객체
+- SimpleDateFormat smf = new SimpleDateFormat(”yyyy년 mm월 dd일”);
